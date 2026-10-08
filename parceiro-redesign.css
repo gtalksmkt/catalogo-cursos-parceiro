@@ -1,0 +1,390 @@
+/* ==========================================================================
+   Emergency Talks — Catálogo de parceiros (redesign)
+   Baseado no visual do site oficial do Grupo Talks:
+   fundo preto → vinho, cards de vidro, botões vermelhos em pílula,
+   fonte Linear Grotesk.
+
+   Funciona em cima do HTML atual do plugin (.vps-chrome / .vp-showcase__*),
+   sem mudar nenhuma classe. Todos os seletores começam com
+   ".vp-showcase-body" para vencer o CSS padrão do plugin.
+   ========================================================================== */
+
+/* ---- Fonte da marca (Linear Grotesk) ----------------------------------- */
+@font-face { font-family: "Linear Grotesk"; font-weight: 400; font-style: normal; font-display: swap; src: url("assets/fonts/LinearGrotesk-Regular.ttf") format("truetype"); }
+@font-face { font-family: "Linear Grotesk"; font-weight: 500; font-style: normal; font-display: swap; src: url("assets/fonts/LinearGrotesk-Medium.ttf") format("truetype"); }
+@font-face { font-family: "Linear Grotesk"; font-weight: 700; font-style: normal; font-display: swap; src: url("assets/fonts/LinearGrotesk-Bold.ttf") format("truetype"); }
+@font-face { font-family: "Linear Grotesk"; font-weight: 800; font-style: normal; font-display: swap; src: url("assets/fonts/LinearGrotesk-Black.ttf") format("truetype"); }
+
+/* ---- Tokens ------------------------------------------------------------ */
+.vp-showcase-body {
+  --et-red-1: #b70412;
+  --et-red-2: #d31c2b;
+  --et-red-glow: 211, 28, 43;
+  --et-ink: #05030a;
+  --et-text: #ffffff;
+  --et-muted: #b9bcc6;
+  --et-glass: rgba(255, 255, 255, 0.055);
+  --et-glass-edge: rgba(255, 255, 255, 0.11);
+  --et-radius: 24px;
+  --et-radius-img: 17px;
+  --et-font: "Linear Grotesk", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+}
+
+/* ---- Fundo (blobs vinho sobre preto, como no site oficial) -------------- */
+html body.vp-showcase-body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--et-text);
+  font-family: var(--et-font);
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--et-ink);
+  background-image:
+    radial-gradient(60vw 42vh at 0% 0%,    rgba(150, 18, 32, 0.55), transparent 70%),
+    radial-gradient(48vw 40vh at 100% 6%,  rgba(120, 14, 28, 0.42), transparent 70%),
+    radial-gradient(55vw 45vh at 78% 38%,  rgba(95, 8, 14, 0.40),   transparent 70%),
+    radial-gradient(50vw 45vh at 14% 68%,  rgba(110, 10, 22, 0.38), transparent 70%),
+    radial-gradient(55vw 40vh at 50% 100%, rgba(170, 24, 44, 0.45), transparent 70%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.vp-showcase-body .vp-showcase-wrap { background: transparent; min-height: 0; }
+.vp-showcase-body .vps-chrome { background: transparent; color: var(--et-muted); font-family: var(--et-font); }
+
+/* ---- Cabeçalho: logo + "Nossos cursos" ---------------------------------- */
+.vp-showcase-body .vps-chrome--header {
+  gap: 22px;
+  padding: 44px 24px 6px;
+}
+.vp-showcase-body .vps-chrome__logo { height: 64px; max-width: 280px; }
+.vp-showcase-body .vps-chrome--header::after {
+  content: "Nossos cursos";
+  display: inline-flex;
+  align-items: center;
+  padding: 11px 28px;
+  border: 1px solid var(--et-glass-edge);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--et-text);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+/* ---- Container ----------------------------------------------------------- */
+.vp-showcase-body .vp-showcase {
+  max-width: 1160px;
+  padding: 40px 24px 72px;
+}
+.vp-showcase-body .vp-showcase__section + .vp-showcase__section { margin-top: 64px; }
+
+/* ---- Divisões (Cursos On-line / Preparatório TEME / TEMI) ---------------- */
+.vp-showcase-body .vp-showcase__section-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 0 0 12px;
+  color: var(--et-text);
+  font-family: var(--et-font);
+  font-size: clamp(1.35rem, 3.2vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.vp-showcase-body .vp-showcase__section-title::before {
+  content: "";
+  flex: 0 0 auto;
+  width: 5px;
+  height: 1.15em;
+  border-radius: 4px;
+  background: linear-gradient(180deg, var(--et-red-2), var(--et-red-1));
+  box-shadow: 0 0 14px rgba(var(--et-red-glow), 0.65);
+}
+.vp-showcase-body .vp-showcase__section-title::after {
+  content: "";
+  flex: 1 1 auto;
+  height: 1px;
+  margin-left: 6px;
+  background: linear-gradient(90deg, rgba(var(--et-red-glow), 0.55), rgba(255, 255, 255, 0.08) 45%, transparent);
+}
+
+/* Descrição curta de cada divisão (inserida por parceiro-redesign.js) */
+.vp-showcase-body .vp-showcase__section-desc {
+  max-width: 68ch;
+  margin: 0 0 28px;
+  color: var(--et-muted);
+  font-size: 1.02rem;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+/* ---- Grade --------------------------------------------------------------- */
+.vp-showcase-body .vp-showcase__grid {
+  gap: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+}
+/* sem descrição, o título precisa do respiro que a descrição daria */
+.vp-showcase-body .vp-showcase__section-title + .vp-showcase__grid { margin-top: 14px; }
+
+/* ---- Card (vidro) -------------------------------------------------------- */
+.vp-showcase-body .vp-showcase__card {
+  padding: 10px;
+  border: 1px solid var(--et-glass-edge);
+  border-radius: var(--et-radius);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025));
+  box-shadow: 0 22px 48px -24px rgba(0, 0, 0, 0.9), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  animation: et-rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.vp-showcase-body .vp-showcase__card:nth-child(2) { animation-delay: 0.06s; }
+.vp-showcase-body .vp-showcase__card:nth-child(3) { animation-delay: 0.12s; }
+.vp-showcase-body .vp-showcase__card:nth-child(n+4) { animation-delay: 0.18s; }
+.vp-showcase-body .vp-showcase__card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(var(--et-red-glow), 0.55);
+  box-shadow: 0 28px 56px -22px rgba(0, 0, 0, 0.95), 0 0 36px -8px rgba(var(--et-red-glow), 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.vp-showcase-body .vp-showcase__thumb {
+  aspect-ratio: 700 / 430;
+  border-radius: var(--et-radius-img);
+  background: rgba(255, 255, 255, 0.05);
+}
+.vp-showcase-body .vp-showcase__thumb img { transition: transform 0.5s ease; }
+.vp-showcase-body .vp-showcase__card:hover .vp-showcase__thumb img { transform: scale(1.035); }
+.vp-showcase-body .vp-showcase__thumb-placeholder { background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)); }
+
+.vp-showcase-body .vp-showcase__soldout-badge {
+  background: rgba(5, 3, 10, 0.82);
+  border: 1px solid var(--et-glass-edge);
+}
+
+/* ---- Corpo do card ------------------------------------------------------- */
+.vp-showcase-body .vp-showcase__body { gap: 8px; padding: 16px 10px 8px; }
+.vp-showcase-body .vp-showcase__name { color: var(--et-text); font-size: 1.05rem; font-weight: 700; }
+.vp-showcase-body .vp-showcase__excerpt { color: var(--et-muted); }
+.vp-showcase-body .vp-showcase__buy { gap: 12px; padding-top: 4px; }
+
+/* Preço */
+.vp-showcase-body .vp-showcase__price {
+  color: var(--et-text);
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.vp-showcase-body .vp-showcase__price--sale { gap: 4px; }
+.vp-showcase-body .vp-showcase__price-from {
+  color: var(--et-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.vp-showcase-body .vp-showcase__price-from del {
+  margin: 0 0 0 3px;
+  color: var(--et-muted);
+  text-decoration-color: rgba(var(--et-red-glow), 0.9);
+}
+.vp-showcase-body .vp-showcase__price-for {
+  color: var(--et-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+.vp-showcase-body .vp-showcase__price-for strong {
+  margin-left: 2px;
+  color: var(--et-text);
+  font-size: 1.7rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  vertical-align: -0.12em;
+}
+.vp-showcase-body .vp-showcase__installments {
+  margin: 0;
+  color: var(--et-muted);
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.vp-showcase-body .vp-showcase__installments .woocommerce-Price-amount {
+  color: var(--et-text);
+  font-weight: 700;
+}
+
+/* ---- Botões (vermelho da marca, pílula) ---------------------------------- */
+.vp-showcase-body .vp-showcase__actions { gap: 10px; margin-top: 4px; }
+.vp-showcase-body .vp-showcase__btn {
+  min-height: 46px;
+  padding: 12px 18px;
+  border-radius: 43px;
+  font-family: var(--et-font);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+}
+.vp-showcase-body .vp-showcase__btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* Comprar — vem primeiro e com mais destaque */
+.vp-showcase-body .vp-showcase__btn--primary {
+  order: -1;
+  flex-grow: 1.25;
+  border: 0;
+  background: linear-gradient(180deg, var(--et-red-1) 0%, var(--et-red-2) 100%);
+  color: #fff;
+  box-shadow: 0 10px 24px -10px rgba(var(--et-red-glow), 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+.vp-showcase-body .vp-showcase__btn--primary:hover {
+  background: linear-gradient(180deg, #c8101f 0%, #e8303f 100%);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -10px rgba(var(--et-red-glow), 1), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+}
+
+/* Saiba mais — contorno vermelho */
+.vp-showcase-body .vp-showcase__btn--ghost {
+  border: 1px solid var(--et-red-1);
+  background: transparent;
+  color: #fff;
+}
+.vp-showcase-body .vp-showcase__btn--ghost:hover {
+  border-color: var(--et-red-2);
+  background: rgba(var(--et-red-glow), 0.16);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---- Estado vazio -------------------------------------------------------- */
+.vp-showcase-body .vp-showcase__empty { color: var(--et-muted); }
+
+/* ---- Rodapé -------------------------------------------------------------- */
+.vp-showcase-body .vps-chrome--footer {
+  position: relative;
+  padding: 44px 24px 56px;
+}
+.vp-showcase-body .vps-chrome--footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(720px, 80%);
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgba(var(--et-red-glow), 0.6), transparent);
+}
+.vp-showcase-body .vps-chrome__logo--footer { height: 44px; margin-bottom: 16px; opacity: 0.95; }
+.vp-showcase-body .vps-chrome__footer-text { color: var(--et-muted); font-size: 0.95rem; font-weight: 500; }
+.vp-showcase-body .vps-chrome__footer-copy { color: var(--et-muted); font-size: 0.8rem; opacity: 0.65; }
+
+/* ---- Balão do WhatsApp (inserido por parceiro-redesign.js) ---------------- */
+.et-wa-bubble {
+  position: fixed;
+  z-index: 10001;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 12px 8px 12px 16px;
+  border-radius: 18px;
+  background: #fff;
+  color: #14111a;
+  font-family: var(--et-font, "Linear Grotesk", system-ui, sans-serif);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(0, 0, 0, 0.06);
+  opacity: 0;
+  transform: translateY(10px) scale(0.92);
+  transform-origin: 100% 100%;
+  transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.2, 0.9, 0.3, 1.25);
+}
+.et-wa-bubble.is-visible { opacity: 1; transform: none; }
+.et-wa-bubble::after {            /* rabinho apontando para o botão */
+  content: "";
+  position: absolute;
+  right: -6px;
+  bottom: 20px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 3px;
+  transform: rotate(45deg);
+}
+.et-wa-bubble__link {
+  position: relative;
+  z-index: 1;
+  color: inherit;
+  text-decoration: none;
+}
+.et-wa-bubble__link strong { display: block; font-weight: 700; }
+.et-wa-bubble__emoji {
+  display: inline-block;
+  font-size: 1.15em;
+  transform-origin: 70% 70%;
+  animation: et-wiggle 2.4s ease-in-out 0.6s infinite;
+}
+.et-wa-bubble__close {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  margin: -4px 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #6b6672;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+.et-wa-bubble__close:hover { background: rgba(0, 0, 0, 0.07); color: #14111a; }
+.et-wa-bubble__close:focus-visible,
+.et-wa-bubble__link:focus-visible { outline: 2px solid #b70412; outline-offset: 2px; border-radius: 6px; }
+
+/* anel pulsando no botão enquanto o balão aparece */
+.e-contact-buttons__chat-button.et-wa-nudge,
+.et-wa.et-wa-nudge { animation: et-ring 1.8s ease-out 3; }
+
+@keyframes et-wiggle {
+  0%, 60%, 100% { transform: rotate(0); }
+  66% { transform: rotate(-14deg) scale(1.08); }
+  74% { transform: rotate(12deg) scale(1.08); }
+  82% { transform: rotate(-8deg); }
+  90% { transform: rotate(4deg); }
+}
+@keyframes et-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.65); }
+  100% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+}
+
+/* ---- Animação de entrada ------------------------------------------------- */
+@keyframes et-rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vp-showcase-body .vp-showcase__card { animation: none; }
+  .et-wa-bubble { transition: opacity 0.2s ease; transform: none; }
+  .et-wa-bubble__emoji,
+  .e-contact-buttons__chat-button.et-wa-nudge,
+  .et-wa.et-wa-nudge { animation: none; }
+  .vp-showcase-body .vp-showcase__card,
+  .vp-showcase-body .vp-showcase__btn,
+  .vp-showcase-body .vp-showcase__thumb img { transition: none; }
+}
+
+/* ---- Mobile -------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .vp-showcase-body .vps-chrome--header { gap: 18px; padding: 32px 16px 4px; }
+  .vp-showcase-body .vps-chrome__logo { height: 52px; }
+  .vp-showcase-body .vps-chrome--header::after { padding: 10px 24px; font-size: 1.05rem; }
+  .vp-showcase-body .vp-showcase { padding: 28px 16px 56px; }
+  .vp-showcase-body .vp-showcase__section + .vp-showcase__section { margin-top: 48px; }
+  .vp-showcase-body .vp-showcase__section-title { margin-bottom: 10px; }
+  .vp-showcase-body .vp-showcase__section-desc { margin-bottom: 22px; font-size: 0.96rem; }
+  .vp-showcase-body .vp-showcase__grid { gap: 20px; grid-template-columns: 1fr; }
+  .vp-showcase-body .vp-showcase__price,
+  .vp-showcase-body .vp-showcase__price-for strong { font-size: 1.55rem; }
+  .vp-showcase-body .vps-chrome--footer { padding: 36px 16px 96px; }
+}

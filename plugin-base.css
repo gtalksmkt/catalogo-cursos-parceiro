@@ -1,0 +1,69 @@
+/* Cópia do CSS ATUAL do plugin de parceiros (emergencytalks.com.br/parceiro/…).
+   Só existe aqui para a prévia local funcionar igual ao site.
+   NÃO precisa ser colado no WordPress — lá o plugin já carrega isso. */
+
+.vp-showcase-wrap { background: var(--vps-bg, transparent); }
+.vp-showcase-body { margin: 0px; background: var(--vps-bg, #fff); }
+.vp-showcase-body .vp-showcase-wrap { min-height: 100vh; }
+.vp-showcase { max-width: 1120px; margin: 0px auto; padding: 40px 20px 64px; }
+.vp-showcase__section + .vp-showcase__section { margin-top: 44px; }
+.vp-showcase__section-title { margin: 0px 0px 18px; font-size: clamp(1.15rem, 2.4vw, 1.5rem); line-height: 1.25; font-family: inherit; font-weight: 700; letter-spacing: normal; text-transform: none; color: var(--vps-heading, #111827); }
+.vp-showcase__grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.vp-showcase__card { position: relative; display: flex; flex-direction: column; overflow: hidden; background: var(--vps-card-bg, #fff); border: 1px solid rgb(229, 231, 235); border-radius: var(--vps-radius, 12px); box-shadow: rgba(16, 24, 40, 0.04) 0px 1px 2px; transition: box-shadow 0.18s, transform 0.18s; }
+.vp-showcase__card:hover { box-shadow: rgba(16, 24, 40, 0.1) 0px 8px 24px; transform: translateY(-2px); }
+.vp-showcase__card--linked { cursor: pointer; }
+.vp-showcase__card-link { position: absolute; inset: 0px; z-index: 1; border-radius: inherit; }
+.vp-showcase__card-link:focus-visible { outline: 3px solid var(--vps-primary, #16a34a); outline-offset: 2px; }
+.vp-showcase__card--soldout .vp-showcase__thumb img, .vp-showcase__card--soldout .vp-showcase__thumb-placeholder { filter: grayscale(1); opacity: 0.72; }
+.vp-showcase__thumb { position: relative; display: block; aspect-ratio: 16 / 10; background: rgb(243, 244, 246); overflow: hidden; }
+.vp-showcase__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vp-showcase__thumb-placeholder { display: block; width: 100%; height: 100%; background: linear-gradient(135deg, rgb(243, 244, 246), rgb(229, 231, 235)); }
+.vp-showcase__soldout-badge { position: absolute; top: 10px; left: 10px; padding: 4px 10px; border-radius: 999px; background: rgba(17, 24, 39, 0.82); color: rgb(255, 255, 255); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+.vp-showcase__soldout-badge--inline { position: static; align-self: flex-start; }
+.vp-showcase__body { display: flex; flex-direction: column; gap: 8px; padding: 16px; flex: 1 1 0%; }
+.vp-showcase__name { margin: 0px; font-size: 1.02rem; line-height: 1.35; color: var(--vps-heading, #111827); }
+.vp-showcase__name a { color: inherit; text-decoration: none; }
+.vp-showcase__name a:hover { text-decoration: underline; }
+.vp-showcase__excerpt { margin: 0px; color: var(--vps-accent, #6b7280); font-size: 0.84rem; line-height: 1.5; }
+.vp-showcase__buy { margin-top: auto; padding-top: 10px; display: flex; flex-direction: column; gap: 10px; }
+.vp-showcase__price { color: var(--vps-heading, #111827); font-weight: 700; font-size: 1.05rem; line-height: 1.3; }
+.vp-showcase__price del { color: var(--vps-accent, #9ca3af); font-weight: 400; font-size: 0.88rem; margin-right: 6px; }
+.vp-showcase__price--sale { display: flex; flex-direction: column; gap: 2px; }
+.vp-showcase__price-from { color: var(--vps-accent, #6b7280); font-weight: 400; font-size: 0.82rem; }
+.vp-showcase__price-from del { margin: 0px 0px 0px 2px; font-size: inherit; }
+.vp-showcase__price-for strong { font-weight: 700; }
+.vp-showcase__installments { margin: -4px 0px 0px; color: var(--vps-accent, #6b7280); font-size: 0.82rem; line-height: 1.4; }
+.vp-showcase__installments .woocommerce-Price-amount { font-weight: 600; color: var(--vps-heading, #111827); }
+.vp-showcase__actions { display: flex; gap: 8px; }
+.vp-showcase__btn { flex: 1 1 0%; display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 10px 18px; border-radius: 999px; font-size: 0.88rem; font-weight: 600; line-height: 1.2; text-decoration: none; text-align: center; transition: background 0.15s, border-color 0.15s; }
+.vp-showcase__btn:focus-visible { outline: 2px solid var(--vps-primary, #16a34a); outline-offset: 2px; }
+.vp-showcase__btn--ghost { border: 1px solid rgb(209, 213, 219); color: rgb(55, 65, 81); background: rgb(255, 255, 255); }
+.vp-showcase__btn--ghost:hover { background: rgb(249, 250, 251); border-color: rgb(156, 163, 175); color: rgb(17, 24, 39); }
+.vp-showcase__btn--primary { border: 1px solid var(--vps-primary-hover, #15803d); background: var(--vps-primary, #16a34a); color: var(--vps-primary-text, #fff); }
+.vp-showcase__btn--primary:hover { background: var(--vps-primary-hover, #15803d); color: var(--vps-primary-text, #fff); }
+.vp-showcase__empty { text-align: center; padding: 48px 20px; color: var(--vps-accent, #4b5563); }
+.vp-showcase__empty .vp-showcase__btn { display: inline-flex; flex: 0 0 auto; margin-top: 12px; }
+@media (max-width: 600px) {
+  .vp-showcase { padding: 28px 16px 48px; }
+  .vp-showcase__grid { gap: 16px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+}
+.vps-chrome { background: radial-gradient(900px 260px at 88% -60%, rgba(var(--vps-primary-rgb, 22, 163, 74), 0.38), transparent 65%),
+        radial-gradient(700px 240px at 8% 130%, rgba(var(--vps-primary-rgb, 22, 163, 74), 0.18), transparent 60%),
+        var(--vps-chrome-bg, #0b0b10); color: var(--vps-chrome-muted, rgba(255, 255, 255, 0.62)); font-family: inherit; }
+.vps-chrome--header { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 18px 24px 20px; text-align: center; }
+.vps-chrome__brand { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
+.vps-chrome__logo { display: block; height: 52px; width: auto; max-width: 240px; object-fit: contain; }
+.vps-chrome__brand-name { color: var(--vps-chrome-heading, #fff); font-size: 20px; font-weight: 800; letter-spacing: 0.01em; }
+.vps-chrome__cta { display: inline-flex; align-items: center; gap: 8px; background: rgb(37, 211, 102); color: rgb(255, 255, 255); border-radius: 999px; padding: 10px 18px; font-size: 14px; font-weight: 700; text-decoration: none; transition: filter 0.15s, transform 0.15s; }
+.vps-chrome__cta:hover { color: rgb(255, 255, 255); filter: brightness(1.08); transform: translateY(-1px); }
+.vps-chrome--footer { margin: 0px; padding: 36px 24px 44px; text-align: center; }
+.vps-chrome__logo--footer { height: 40px; margin: 0px auto 14px; }
+.vps-chrome__footer-text { color: var(--vps-chrome-muted, rgba(255, 255, 255, 0.78)); font-size: 14px; margin: 0px 0px 6px; }
+.vps-chrome__footer-text strong { color: var(--vps-chrome-heading, #fff); }
+.vps-chrome__footer-copy { color: var(--vps-chrome-muted, rgba(255, 255, 255, 0.45)); font-size: 12.5px; margin: 0px; opacity: 0.7; }
+@media (max-width: 640px) {
+  .vps-chrome--header { padding: 14px 16px 16px; gap: 10px; }
+  .vps-chrome__logo { height: 42px; }
+  .vps-chrome__cta { padding: 9px 16px; font-size: 13px; }
+  .vps-chrome--footer { padding: 28px 16px 90px; }
+}
