@@ -40,9 +40,12 @@ No topo de `parceiro-redesign.js`:
 - `BUBBLE_TITLE`, `BUBBLE_TEXT`, `BUBBLE_EMOJI` — texto e emoji do balão (😊, ou 💡 se preferir).
 - `SHOW_AFTER_MS` / `HIDE_AFTER_MS` — quando o balão aparece e quanto tempo fica (6 s / 14 s).
 
-## Prévia local
+## Prévia
 
-Abrir `index.html` direto no navegador, ou servir a pasta com qualquer servidor estático.
+- **No ar (GitHub Pages):** https://gtalksmkt.github.io/catalogo-cursos-parceiro/ — a página está
+  marcada como `noindex` para não competir com a página real nos buscadores. Como as fontes pagas não
+  estão no repositório, a prévia usa uma fonte parecida no lugar da Linear Grotesk.
+- **Local:** abrir `index.html` direto no navegador, ou servir a pasta com qualquer servidor estático.
 
 ## Cores e medidas (do site oficial)
 
